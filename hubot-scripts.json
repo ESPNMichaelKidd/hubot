@@ -1,1 +1,1 @@
-["redis-brain.coffee", "shipit.coffee", "pagerduty.coffee", "google.coffee"]
+["redis-brain.coffee", "shipit.coffee", "google.coffee"]
