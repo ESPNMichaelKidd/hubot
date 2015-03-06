@@ -18,7 +18,7 @@ options = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /^fu (.\w*)/i, (msg) ->
+  robot.hear /^fu (.+)/i, (msg) ->
     to    = msg.match[1]
     from  = msg.message.user.name
     random_fu = msg.random options
