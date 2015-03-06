@@ -13,8 +13,9 @@ options = [
   'donut',
   'shakespeare',
   'linus',
-  'king',
-  'chainsaw'
+  'outside',
+  'madison',
+  'yoda'
 ]
 
 module.exports = (robot) ->
