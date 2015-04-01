@@ -21,12 +21,11 @@ options = [
 module.exports = (robot) ->
   robot.hear /^fu (\w+)( (.+))?/i, (msg) ->
     from  = msg.message.user.name
-	if msg.match[1].toLowerCase() in options
-	  the_fu = msg.match[1]
-	  to = msg.match[3]
+	to
+	[the_fu, to] = if msg.match[1].toLowerCase() in options
+	  [msg.match[1], msg.match[3]]
 	else
-      the_fu = msg.random options
-	  to = msg.match[1] + msg.match[2]
+      [msg.random options, msg.match[1] + msg.match[2]]
     
     msg.http("http://foaas.com/#{the_fu}/#{to}/#{from}/")
       .headers(Accept: 'application/json')
