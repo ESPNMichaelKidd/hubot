@@ -3,6 +3,7 @@
 #
 # Commands
 #   fu <object> - tells <object> to f off with random response from FOAAS
+#   fu <the_fu> <object> - tells <object> to f off with <the_fu> from FOAAS
 #
 # Dependencies:
 #   None
