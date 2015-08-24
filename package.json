@@ -26,7 +26,8 @@
     "hubot-auth": ">= 0.0.0",
     "hubot-heroku-keepalive": ">= 0.0.0",
     "hubot-slack": ">=3.3.0",
-	"hubot-plusplus": ">=1.1.5"
+    "hubot-plusplus": ">=1.1.5",
+    "hubot-scripts-stock": ">=0.2.1"
   },
   "engines": {
     "node": ">= 0.8.x",
