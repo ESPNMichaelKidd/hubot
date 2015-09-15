@@ -2,8 +2,8 @@
 #   FFL Standings and Scores
 #
 # Commands
-#   ffl scores <league> <week> - get scoreboard for 'espna' or 'espnb', week optional
-#   ffl standings <league> - get standings for 'espna' or 'espnb'
+#   hubot ffl scores <league> <week> - get scoreboard for 'espna' or 'espnb', week optional
+#   hubot ffl standings <league> - get standings for 'espna' or 'espnb'
 #
 # Dependencies:
 #   None
@@ -16,17 +16,20 @@ ffl_api_url = 'http://games.espn.go.com/ffl/api/v2/'
 options = ['scores','standings']
 
 module.exports = (robot) ->
-  robot.hear /^ffl (\w+)? (\w+)?( (\d+))?/i, (msg) ->
+  robot.respond /ffl (\w+)? (\w+)?( (\d+))?/i, (msg) ->
     
     if msg.match[1].toLowerCase() in options
       type = msg.match[1]
-        
+
     if msg.match[2] is 'espna'
       leagueId = espna
     else if msg.match[2] is 'espnb'
       leagueId = espnb
-            
-    if type is 'scores'
+    
+    if !leagueId
+      msg.send 'Error: must specify league'
+      
+    else if type is 'scores'
       url = ffl_api_url + 'scoreboard?seasonId=' + seasonId + '&leagueId=' + leagueId
       if msg.match[4] > 0
         url = url + '&scoringPeriodId=' + msg.match[4]
@@ -35,7 +38,8 @@ module.exports = (robot) ->
         .get() (err, res, body) ->
           json = JSON.parse body
           scoreboard = json.scoreboard
-            
+          
+          message = ""
           for matchup in scoreboard.matchups
             do (matchup) ->
               if (not matchup.bye)
@@ -50,13 +54,14 @@ module.exports = (robot) ->
                 team2Str = team2Name + ' ' + team2Pts
                 
                 if team2Pts > team1Pts
-                  msg.send '> ' + team1Str + ' - *' + team2Str + '*'
+                  message += '> ' + team1Str + ' - *' + team2Str + '*' + '\n'
                 else
-                  msg.send '> *' + team1Str + '* - ' + team2Str
-        
+                  message += '> *' + team1Str + '* - ' + team2Str + '\n'
+          msg.send message
+                
     else if type is 'standings'
       url = ffl_api_url + 'standings?seasonId=' + seasonId + '&leagueId=' + leagueId
-        
+      
       robot.http(url)
         .get() (err, res, body) ->
           json = JSON.parse body
@@ -77,6 +82,8 @@ module.exports = (robot) ->
             
               sortedTeams[teamNum - 1] = teamStr
           
+          message = ""
           for teamStr in sortedTeams
             do (teamStr) ->
-              msg.send '> ' + teamStr 
+              message += '> ' + teamStr + '\n'
+          msg.send message
