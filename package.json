@@ -29,7 +29,7 @@
     "hubot-plusplus": ">=1.1.5",
     "hubot-meme": ">=0.0.0",
     "hubot-scripts-stock": ">=0.2.1",
-    "hubox-zmachine": ">=0.0.0"
+    "hubot-zmachine": ">=0.0.0"
   },
   "engines": {
     "node": ">= 0.8.x",
