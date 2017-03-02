@@ -25,6 +25,7 @@
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-auth": ">= 0.0.0",
     "hubot-heroku-keepalive": ">= 0.0.0 < 1.0.0",
+    "hubot-redis-brain": "0.0.3",
     "hubot-slack": ">=3.3.0",
     "hubot-plusplus": ">=1.1.5",
     "hubot-meme": ">=0.0.0",
