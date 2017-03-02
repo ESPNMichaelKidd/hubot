@@ -1,1 +1,9 @@
-["hubot-auth", "hubot-heroku-keepalive", "hubot-plusplus", "hubot-meme", "hubot-scripts-stock", "hubot-zmachine"]
+[
+  "hubot-auth",
+  "hubot-heroku-keepalive",
+  "hubot-meme",
+  "hubot-plusplus",
+  "hubot-redis-brain",
+  "hubot-scripts-stock",
+  "hubot-zmachine"
+]
