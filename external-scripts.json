@@ -3,7 +3,5 @@
   "hubot-heroku-keepalive",
   "hubot-meme",
   "hubot-plusplus",
-  "hubot-redis-brain",
-  "hubot-scripts-stock",
-  "hubot-zmachine"
+  "hubot-redis-brain"
 ]
